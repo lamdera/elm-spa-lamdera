@@ -1,7 +1,11 @@
-module Main exposing (main)
+module Frontend exposing (..)
 
-import Browser
+import Bridge exposing (..)
+import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
+import Html
+import Html.Attributes as Attr
+import Lamdera
 import Shared exposing (Flags)
 import Spa.Document as Document exposing (Document)
 import Spa.Generated.Pages as Pages
@@ -9,38 +13,36 @@ import Spa.Generated.Route as Route exposing (Route)
 import Url exposing (Url)
 
 
-main : Program Flags Model Msg
-main =
-    Browser.application
+type alias Model =
+    FrontendModel
+
+
+type alias Msg =
+    FrontendMsg
+
+
+app =
+    Lamdera.frontend
         { init = init
-        , update = update
-        , subscriptions = subscriptions
-        , view = view >> Document.toBrowserDocument
         , onUrlRequest = LinkClicked
         , onUrlChange = UrlChanged
+        , update = update
+        , updateFromBackend = updateFromBackend
+        , subscriptions = subscriptions
+        , view = view
         }
 
 
-
--- INIT
-
-
-type alias Model =
-    { shared : Shared.Model
-    , page : Pages.Model
-    }
-
-
-init : Flags -> Url -> Nav.Key -> ( Model, Cmd Msg )
-init flags url key =
+init : Url -> Nav.Key -> ( Model, Cmd Msg )
+init url key =
     let
         ( shared, sharedCmd ) =
-            Shared.init flags url key
+            Shared.init () url key
 
         ( page, pageCmd ) =
             Pages.init (fromUrl url) shared
     in
-    ( Model shared page
+    ( FrontendModel shared page
     , Cmd.batch
         [ Cmd.map Shared sharedCmd
         , Cmd.map Pages pageCmd
@@ -48,18 +50,7 @@ init flags url key =
     )
 
 
-
--- UPDATE
-
-
-type Msg
-    = LinkClicked Browser.UrlRequest
-    | UrlChanged Url
-    | Shared Shared.Msg
-    | Pages Pages.Msg
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
+update : FrontendMsg -> Model -> ( Model, Cmd FrontendMsg )
 update msg model =
     case msg of
         LinkClicked (Browser.Internal url) ->
@@ -115,7 +106,14 @@ update msg model =
             )
 
 
-view : Model -> Document Msg
+updateFromBackend : ToFrontend -> Model -> ( Model, Cmd FrontendMsg )
+updateFromBackend msg model =
+    case msg of
+        NoOpToFrontend ->
+            ( model, Cmd.none )
+
+
+view : Model -> Browser.Document Msg
 view model =
     Shared.view
         { page =
@@ -124,6 +122,7 @@ view model =
         , toMsg = Shared
         }
         model.shared
+        |> Document.toBrowserDocument
 
 
 subscriptions : Model -> Sub Msg

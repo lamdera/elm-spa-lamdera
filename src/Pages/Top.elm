@@ -14,8 +14,8 @@ type alias Model =
     Url Params
 
 
-type alias Msg =
-    Never
+type Msg
+    = TopMsg
 
 
 page : Page Params Model Msg
