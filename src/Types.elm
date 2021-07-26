@@ -1,30 +1,40 @@
 module Types exposing (..)
 
-import Bridge
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
+import Gen.Pages as Pages
+import Shared exposing (Flags)
 import Url exposing (Url)
 
 
 type alias FrontendModel =
-    Bridge.FrontendModel
+    { url : Url
+    , key : Key
+    , shared : Shared.Model
+    , page : Pages.Model
+    }
 
 
-type alias FrontendMsg =
-    Bridge.FrontendMsg
+type FrontendMsg
+    = ChangedUrl Url
+    | ClickedLink Browser.UrlRequest
+    | Shared Shared.Msg
+    | Page Pages.Msg
+    | Noop
 
 
 type alias BackendModel =
-    Bridge.BackendModel
+    { message : String
+    }
 
 
-type alias ToBackend =
-    Bridge.ToBackend
+type ToBackend
+    = NoOpToBackend
 
 
-type alias BackendMsg =
-    Bridge.BackendMsg
+type BackendMsg
+    = NoOpBackendMsg
 
 
-type alias ToFrontend =
-    Bridge.ToFrontend
+type ToFrontend
+    = NoOpToFrontend

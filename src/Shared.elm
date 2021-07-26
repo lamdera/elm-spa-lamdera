@@ -1,19 +1,17 @@
 module Shared exposing
     ( Flags
     , Model
-    , Msg
+    , Msg(..)
     , init
     , subscriptions
     , update
     , view
     )
 
-import Browser.Navigation exposing (Key)
-import Element exposing (..)
-import Element.Font as Font
-import Spa.Document exposing (Document)
-import Spa.Generated.Route as Route
-import Url exposing (Url)
+import Html exposing (..)
+import Html.Attributes exposing (class, href, rel)
+import Request exposing (Request)
+import View exposing (View)
 
 
 
@@ -25,14 +23,12 @@ type alias Flags =
 
 
 type alias Model =
-    { url : Url
-    , key : Key
-    }
+    ()
 
 
-init : Flags -> Url -> Key -> ( Model, Cmd Msg )
-init flags url key =
-    ( Model url key
+init : Request -> Flags -> ( Model, Cmd Msg )
+init _ json =
+    ( ()
     , Cmd.none
     )
 
@@ -42,18 +38,20 @@ init flags url key =
 
 
 type Msg
-    = ReplaceMe
+    = Noop
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
+update : Request -> Msg -> Model -> ( Model, Cmd Msg )
+update _ msg model =
     case msg of
-        ReplaceMe ->
-            ( model, Cmd.none )
+        Noop ->
+            ( model
+            , Cmd.none
+            )
 
 
-subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions : Request -> Model -> Sub Msg
+subscriptions _ _ =
     Sub.none
 
 
@@ -62,18 +60,16 @@ subscriptions model =
 
 
 view :
-    { page : Document msg, toMsg : Msg -> msg }
+    Request
+    -> { page : View msg, toMsg : Msg -> msg }
     -> Model
-    -> Document msg
-view { page, toMsg } model =
-    { title = page.title
+    -> View msg
+view req { page, toMsg } model =
+    { title =
+        page.title
     , body =
-        [ column [ padding 20, spacing 20, height fill ]
-            [ row [ spacing 20 ]
-                [ link [ Font.color (rgb 0 0.25 0.5), Font.underline ] { url = Route.toString Route.Top, label = text "Homepage" }
-                , link [ Font.color (rgb 0 0.25 0.5), Font.underline ] { url = Route.toString Route.NotFound, label = text "Not found" }
-                ]
-            , column [ height fill ] page.body
+        [ div [ class "layout" ]
+            [ div [ class "page" ] page.body
             ]
         ]
     }

@@ -1,38 +1,12 @@
-module Pages.NotFound exposing (Model, Msg, Params, page)
+module Pages.NotFound exposing (view)
 
-import Element exposing (..)
-import Spa.Document exposing (Document)
-import Spa.Page as Page exposing (Page)
-import Spa.Url exposing (Url)
+import Html exposing (..)
 
 
-type alias Params =
-    ()
-
-
-type alias Model =
-    Url Params
-
-
-type Msg
-    = NotFoundMsg
-
-
-page : Page Params Model Msg
-page =
-    Page.static
-        { view = view
-        }
-
-
-
--- VIEW
-
-
-view : Url Params -> Document Msg
-view { params } =
+view : { title : String, body : List (Html msg) }
+view =
     { title = "404"
     , body =
-        [ text "Page not found"
+        [ text "Not found."
         ]
     }

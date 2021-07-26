@@ -1,41 +1,52 @@
-# new elm-spa project
-> More documentation at https://elm-spa.dev
+# How it works
 
-## local development
+This starter application is built with:
 
-You can get this site up and running with one command:
+- [elm-spa](https://elm-spa.dev), a friendly tool for building SPAs with Elm!
+- [Lamdera](https://lamdera.com), a delightful platform
+for full-stack web apps
+
+## Dependencies
+
+`elm-spa` requires the latest LTS version of [Node.js](https://nodejs.org/)
+
+```bash
+npm install -g elm elm-spa
+```
+
+You can [get the `lamdera` binary from here](https://dashboard.lamdera.app/docs/download).
+
+## Running locally
+
+Clone the project and build the `elm-spa` code gen:
 
 ```
-npm start
+git clone git@github.com:supermario/lamdera-realworld.git
+cd lamdera-realworld
+lamdera reset
+lamdera make src/Frontend.elm
+elm-spa make
 ```
 
-### other commands to know
-
-There are a handful of commands in the [package.json](./package.json).
-
-Command | Description
-:-- | :--
-`npm run dev` | Run a dev server and automatically build changes.
-`npm run test:watch` | Run tests as you code.
-`npm run build` | Build the site for production.
-`npm run test` | Run the test suite once, great for CI
-
-
-## deploying
-
-After you run `npm run build`, the contents of the `public` folder can be hosted as a static site. If you haven't hosted a static site before, I'd recommend using [Netlify](https://netlify.com) (it's free!)
-
-### using netlify
-
-Add a `netlify.toml` file next to this README, for standard SPA routing:
-
-```toml
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+Boot the Lamdera local dev environment:
 ```
- 
-__Build command:__ `npm run build`
+lamdera live
+```
 
-__Publish directory:__ `public`
+For any `elm-spa` changes, such as vendoring one of the `.elm-spa` defaults, re-run `elm-spa make`.
+
+See [Getting Started](https://lamdera.com/start) if you're new to Lamdera.
+
+### Other `elm-spa` commands
+
+```bash
+elm-spa add    # add a new page to the application
+elm-spa build  # production build
+elm-spa watch  # runs build as you code (without the server)
+```
+
+## Learn more
+
+You can learn more about `elm-spa` at [elm-spa.dev](https://elm-spa.dev).
+
+You can learn more about `lamdera` at [https://dashboard.lamdera.app/](https://dashboard.lamdera.app/).

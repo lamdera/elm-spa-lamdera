@@ -1,8 +1,11 @@
 module Backend exposing (..)
 
-import Bridge exposing (..)
-import Html
-import Lamdera exposing (ClientId, SessionId)
+import Dict
+import Gen.Msg
+import Lamdera exposing (..)
+import Pages.Home_
+import Task
+import Types exposing (..)
 
 
 type alias Model =
@@ -20,7 +23,8 @@ app =
 
 init : ( Model, Cmd BackendMsg )
 init =
-    ( { message = "Hello!" }
+    ( { message = "stub"
+      }
     , Cmd.none
     )
 
