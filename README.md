@@ -6,6 +6,11 @@ This starter application is built with:
 - [Lamdera](https://lamdera.com), a delightful platform
 for full-stack web apps
 
+It demonstrates how to get started with `elm-spa` on Lamdera.
+
+For a full fledged application, check out the [lamdera-realworld](https://github.com/supermario/lamdera-realworld) repo.
+
+
 ## Dependencies
 
 `elm-spa` requires the latest LTS version of [Node.js](https://nodejs.org/)
