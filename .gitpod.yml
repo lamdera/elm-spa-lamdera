@@ -5,7 +5,6 @@ tasks:
   - init: npm install
     command: npm start
   - command: elm-language-server
-  - command: lamdera reset | y
 ports:
   - port: 8000
     onOpen: open-preview
