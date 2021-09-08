@@ -3,7 +3,7 @@ image:
 
 tasks:
   - init: yarn install
-    command: yarn global elm elm-spa @elm-tooling/elm-language-server elm-test elm-format
+    command: yarn global elm elm-spa elm-test elm-format  @elm-tooling/elm-language-server
   - init: start elm language server
     command: elm-language-server
 
@@ -13,4 +13,4 @@ ports:
 
 vscode:
   extensions:
-    - elmTooling.elm-ls-vscode@1.2.0
+    - elmTooling.elm-ls-vscode@2.2.1
