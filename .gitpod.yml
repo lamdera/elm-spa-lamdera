@@ -3,11 +3,9 @@ image:
 
 tasks:
   - init: npm install
-    command: npm install
-  - init: start server
-    command: elm-language-server
-  - init: start server
-    command: lamdera reset
+    command: npm start
+  - command: elm-language-server
+  - command: lamdera reset
 ports:
   - port: 8000
     onOpen: open-preview
