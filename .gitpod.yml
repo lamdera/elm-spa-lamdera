@@ -2,15 +2,16 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: yarn install
-    command: yarn global elm elm-spa elm-test elm-format  @elm-tooling/elm-language-server
-  - init: start elm language server
+  - init: npm install
+    command: npm install
+  - init: start server
     command: elm-language-server
-
+  - init: start server
+    command: lamdera reset
 ports:
   - port: 8000
     onOpen: open-preview
 
 vscode:
   extensions:
-    - elmTooling.elm-ls-vscode@2.2.1
+    - elmtooling.elm-ls-vscode
