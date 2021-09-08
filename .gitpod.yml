@@ -1,9 +1,14 @@
+image:
+  file: .gitpod.Dockerfile
+
 tasks:
   - init: yarn install
-    command: yarn showcase
+    command: yarn global elm elm-spa @elm-tooling/elm-language-server elm-test elm-format
+  - init: start elm language server
+    command: elm-language-server
 
 ports:
-  - port: 123
+  - port: 8000
     onOpen: open-preview
 
 vscode:
