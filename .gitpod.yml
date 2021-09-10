@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: lamdera reset --Y
+  - init: yes | lamdera reset
     command: sudo lamdera live
 ports:
   - port: 8000
