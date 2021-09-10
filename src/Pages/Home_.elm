@@ -1,8 +1,6 @@
 module Pages.Home_ exposing (Model, Msg(..), page)
 
-import Html exposing (..)
-import Html.Attributes exposing (class, classList)
-import Html.Events as Events
+import Element exposing (..)
 import Page
 import Request exposing (Request)
 import Shared
@@ -63,5 +61,5 @@ subscriptions _ =
 view : Shared.Model -> Model -> View Msg
 view shared model =
     { title = ""
-    , body = [ text "Hello from the homepage!" ]
+    , body = text "Hello from the homepage!"
     }

@@ -4,6 +4,7 @@ import Browser
 import Browser.Dom
 import Browser.Navigation as Nav exposing (Key)
 import Effect
+import Element
 import Gen.Model
 import Gen.Pages as Pages
 import Gen.Route as Route
@@ -138,13 +139,16 @@ updateFromBackend msg model =
 
 view : Model -> Browser.Document Msg
 view model =
-    Shared.view (Request.create () model.url model.key)
-        { page =
-            Pages.view model.page model.shared model.url model.key
-                |> View.map Page
-        , toMsg = Shared
-        }
-        model.shared
+    model.shared
+        |> Shared.view (Request.create () model.url model.key)
+            { page = Pages.view model.page model.shared model.url model.key |> View.map Page
+            , toMsg = Shared
+            }
+        |> (\{ title, body } ->
+                { title = title
+                , body = [ Element.layout [] body ]
+                }
+           )
 
 
 
