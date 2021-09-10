@@ -3,6 +3,7 @@ image:
 
 tasks:
   - init: lamdera reset --Y
+    command: sudo lamdera live
 ports:
   - port: 8000
     onOpen: open-preview
