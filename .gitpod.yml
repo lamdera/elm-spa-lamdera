@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: npm install
+  - init: lamdera reset --Y
 ports:
   - port: 8000
     onOpen: open-preview
