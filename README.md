@@ -1,3 +1,6 @@
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/lolcookie/elm-spa-lamdera)
+
+
 # How it works
 
 This starter application is built with:
