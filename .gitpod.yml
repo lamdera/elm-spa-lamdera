@@ -11,3 +11,5 @@ ports:
 vscode:
   extensions:
     - elmtooling.elm-ls-vscode
+    - hbenl.vscode-test-explorer
+    - hbenl.test-adapter-converter
