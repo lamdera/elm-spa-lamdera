@@ -10,6 +10,10 @@ It demonstrates how to get started with `elm-spa` on Lamdera.
 
 For a full fledged application, check out the [lamdera-realworld](https://github.com/supermario/lamdera-realworld) repo.
 
+## With `elm-ui`
+
+If you'd like to use `elm-ui`, check out the [elm-ui branch](https://github.com/lamdera/elm-spa-lamdera/tree/elm-ui) for the adjustments.
+
 
 ## Dependencies
 
