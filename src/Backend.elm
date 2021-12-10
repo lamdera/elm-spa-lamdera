@@ -1,5 +1,6 @@
 module Backend exposing (..)
 
+import Bridge exposing (..)
 import Dict
 import Gen.Msg
 import Lamdera exposing (..)
@@ -36,7 +37,7 @@ update msg model =
             ( model, Cmd.none )
 
 
-updateFromFrontend : SessionId -> ClientId -> ToBackend -> Model -> ( Model, Cmd BackendMsg )
+updateFromFrontend : SessionId -> ClientId -> Types.ToBackend -> Model -> ( Model, Cmd BackendMsg )
 updateFromFrontend sessionId clientId msg model =
     case msg of
         NoOpToBackend ->

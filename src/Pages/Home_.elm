@@ -63,5 +63,5 @@ subscriptions _ =
 view : Shared.Model -> Model -> View Msg
 view shared model =
     { title = ""
-    , body = [ text "Home" ]
+    , body = [ text "Hello from the homepage!" ]
     }

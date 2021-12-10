@@ -1,5 +1,6 @@
 module Types exposing (..)
 
+import Bridge
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
 import Gen.Pages as Pages
@@ -28,8 +29,8 @@ type alias BackendModel =
     }
 
 
-type ToBackend
-    = NoOpToBackend
+type alias ToBackend =
+    Bridge.ToBackend
 
 
 type BackendMsg
