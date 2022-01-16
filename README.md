@@ -12,7 +12,7 @@ For a full fledged application, check out the [lamdera-realworld](https://github
 
 ## With `elm-ui`
 
-If you'd like to use `elm-ui`, check out the [elm-ui branch](https://github.com/lamdera/elm-spa-lamdera/tree/elm-ui) for the adjustments.
+If you'd like to use `elm-ui`, use the [elm-ui branch](https://github.com/lamdera/elm-spa-lamdera/tree/elm-ui) or check out the [elm-ui commit diff](https://github.com/lamdera/elm-spa-lamdera/commit/d7c76a6d81083ef7af0135812cd922781340bfc1) for the adjustments.
 
 
 ## Dependencies
