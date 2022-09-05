@@ -1,5 +1,6 @@
 module View exposing (View, map, none, placeholder, toBrowserDocument)
 
+import Browser
 import Element exposing (..)
 
 
@@ -28,5 +29,8 @@ map fn view =
     }
 
 
-toBrowserDocument =
-    identity
+toBrowserDocument : View msg -> Browser.Document msg
+toBrowserDocument view =
+    { title = view.title
+    , body = [ Element.layout [] view.body ]
+    }
